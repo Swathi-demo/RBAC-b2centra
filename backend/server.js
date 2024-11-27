@@ -24,7 +24,33 @@ app.get('/api/user', (req, res) => {
         email: "john.doe@example.com",
     });
 });
-
+const shipments = [
+    {
+      id: '1',
+      origin: 'New York',
+      destination: 'Los Angeles',
+      currentLocation: { lat: 34.0522, lng: -118.2437 },
+      status: 'In Transit',
+    },
+    {
+      id: '2',
+      origin: 'London',
+      destination: 'Paris',
+      currentLocation: { lat: 48.8566, lng: 2.3522 },
+      status: 'Delivered',
+    },
+    {
+      id: '3',
+      origin: 'Tokyo',
+      destination: 'Osaka',
+      currentLocation: { lat: 35.6895, lng: 139.6917 },
+      status: 'Delayed',
+    },
+  ];
+  
+  app.get('/api/shipments', (req, res) => {
+    res.json(shipments);
+  });
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
